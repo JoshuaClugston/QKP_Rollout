@@ -1,17 +1,29 @@
 # QKP_Rollout
 ## Introduction
-This repository presents a rollout method for constrained dynamic programming, applied to the 0-1 Quadratic Knapsack Problem (QKP): 
+This repository presents a rollout method for constrained dynamic programming, applied to the 0-1 Quadratic Knapsack Problem (QKP):
+
+$$ 
+\begin{alignat}{1}
+\\text{maximize }\ & \sum_{i=1}^{n}\sum_{j=1}^{n}p_{ij}x_{i}x_{j}, \\\\
+\\text{subject to }\ & \sum_{i=1}^{n}w_{i}x_{i} \leq C, \\\\
+& \mathbf{x}\in \\{0,1\\}^{n} =: \mathbb{B}^{n}.
+\end{alignat}
+$$
+
+Using the well-known exact McCormick relaxation of 0-1 QKP 
 
 $$
 \begin{alignat}{1}
-\text{maximize }\ & \sum_{i=1}^{n}\sum_{j=1}^{n}p_{ij}u_{ij}, \\\\
-\text{subject to }\ & u_{ij} \geq x_{j}+x_{i}-1,\text{ for all $i\in [n]$, $j\in [n]$}, \\\\
+\\text{maximize }\ & \sum_{i=1}^{n}\sum_{j=1}^{n}p_{ij}u_{ij}, \\\\
+\\text{subject to }\ & u_{ij} \geq x_{j}+x_{i}-1,\text{ for all $i\in [n]$, $j\in [n]$}, \\\\
 & u_{ij} \leq x_{i},\text{ for all $i\in [n]$, $j\in [n]$},\\\\
 & u_{ij} \leq x_{j},\text{ for all $i\in [n]$, $j\in [n]$},\\\\
 & \sum_{i=1}^{n}w_{i}x_{i}\leq C, \\\\
-& \\mathbf{x} \in \\{0,1\\}^{n},\ \\mathbf{u}\in\mathbb{R}_{\geq0}^{n\times n}.
+& \\mathbf{x} \in  \mathbb{B}^{n},\ \\mathbf{u}\in\mathbb{R}_{\geq0}^{n\times n}
 \end{alignat}
 $$
+
+at ... 
 
 ## Data
 Data for this project is generated using the standard scheme for testing algorithms designed for solving the 0-1 QKP. Particularly, for the profits associated with pairing $i$ with $j$, 
