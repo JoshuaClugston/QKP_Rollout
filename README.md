@@ -10,7 +10,39 @@ $$
 \end{alignat}
 $$
 
-Using the well-known exact McCormick relaxation of 0-1 QKP 
+By considering $$r \in [C]$$, $$k\in [n]$$, the original problem is restricted and written as:
+
+$$
+\max\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} : \sum_{i=1}^{k}w_{i}x_{i} = r,\ \mathbf{x}\in\mathbb{B}^{k}\\}, 
+$$
+
+where $$k$$ denotes the current item's index and $$r$$ denotes the current amount of remaining space in the knapsack when considering the $$k$$ th item. Then, a subgradient approach is considered, with the restricted problem \eqref{7} having restricted Lagrangian relaxation subproblems 
+
+$$
+\max\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\left(r - \sum_{i=1}^{k}w_{i}x_{i}\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\}. 
+$$
+
+Let the triple $$\mathbf{y} = (k,r,S)$$ denote the current state at the $$k$$th item with capacity used, $$r$$, and set of indices of currently included knapsack items $$S$$. The immediate profit earned by considering $$\mathbf{y}$$ and $$\lambda$$ is defined using 
+
+$$
+g(\mathbf{y},u) = p_{kk} + 2\sum_{j\in S\setminus \{k\}}p_{kj},
+$$
+
+which is the profit of including item $$k$$ with capacity used $$r$$. A viable rollout approach introduces approximate costs-to-go function 
+
+$$
+\tilde{J}(\mathbf{y}) = \max\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\\left(r - \sum_{i=1}^{k}w_{i}x_{i}\\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\\}
+$$
+
+which is an upper bound on the restricted problem \eqref{7}, so that approximate $$Q-$$ factors are computed according to
+
+$$
+\tilde{Q}(\mathbf{y},u) = g(\mathbf{y},u) + \tilde{J}(\mathbf{y}),
+$$
+
+with $$u \in \mathcal{U}(\mathbf{y})=:\{0,1\}$$ such that $$u = 1$$ if item $$k$$ is included in the knapsack while $$w_{k}\leq r$$, and $$u = 0$$ otherwise.
+
+An alternative of the presented method uses the well-known exact McCormick relaxation of 0-1 QKP 
 
 $$
 \begin{alignat}{1}
@@ -23,7 +55,17 @@ $$
 \end{alignat}
 $$
 
-at ... 
+as one variant of the rollout base policy, alongside ... 
+
+### Solution Quality
+
+Performance of QKP_Rollout is finally assessed using the approximate gap 
+
+$$
+"\\texttt{Gap}" = \frac{|z^{r}-z^{c}|}{z^{c}},
+$$
+
+where 
 
 ## Data
 Data for this project is generated using the standard scheme for testing algorithms designed for solving the 0-1 QKP. Particularly, for the profits associated with pairing $i$ with $j$, 
