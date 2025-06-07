@@ -72,7 +72,7 @@ $$
 
 ### Solution Quality
 
-Performance of QKP_Rollout is finally assessed using the approximate gap 
+Performance of QKP_Rollout is assessed using the approximate gap 
 
 $$
 "\\texttt{Gap}" = \frac{|z^{r}-z^{c}|}{z^{c}},
