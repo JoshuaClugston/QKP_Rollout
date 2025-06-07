@@ -65,7 +65,7 @@ $$
 "\\texttt{Gap}" = \frac{|z^{r}-z^{c}|}{z^{c}},
 $$
 
-where 
+where $`z^{r}`$ denotes the objective value for rollout, and $`z^{c}`$ the objective value for CPLEX.
 
 ## Data
 Data for this project is generated using the standard scheme for testing algorithms designed for solving the 0-1 QKP. Particularly, for the profits associated with pairing $i$ with $j$, 
