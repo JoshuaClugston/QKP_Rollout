@@ -66,7 +66,7 @@ $$
 & u_{ij} \leq x_{i},\text{ for all $i\in [k]$, $j\in [k]$},\\\\
 & u_{ij} \leq x_{j},\text{ for all $i\in [k]$, $j\in [k]$},\\\\
 & \sum_{i=1}^{n}w_{i}x_{i}\leq r, \\\\
-& \\mathbf{x} \in  \mathbb{R}^{n},\ \\mathbf{u}\in\mathbb{R}_{\geq0}^{n\times n}.
+& \\mathbf{x} \in  \mathbb{R}^{k},\ \\mathbf{u}\in\mathbb{R}_{\geq0}^{k\times k}.
 \end{cases}
 $$
 
