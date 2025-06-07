@@ -13,16 +13,16 @@ $$
 By considering $$r \in [C]$$, $$k\in [n]$$, the original problem is restricted and written as:
 
 $$
-\max\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} : \sum_{i=1}^{k}w_{i}x_{i} = r,\ \mathbf{x}\in\mathbb{B}^{k}\\}, 
+\max\left\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} : \sum_{i=1}^{k}w_{i}x_{i} = r,\ \mathbf{x}\in\mathbb{B}^{k}\right\\}, 
 $$
 
-where $$k$$ denotes the current item's index and $$r$$ denotes the current amount of remaining space in the knapsack when considering the $$k$$ th item. Then, a subgradient approach is considered, with the restricted problem \eqref{7} having restricted Lagrangian relaxation subproblems 
+where $$k$$ denotes the current item's index and $$r$$ denotes the current amount of remaining space in the knapsack when considering the $`k`$th item. Then, a subgradient approach is considered, with the restricted problem having restricted Lagrangian relaxation subproblems 
 
 $$
-\max\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\left(r - \sum_{i=1}^{k}w_{i}x_{i}\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\}. 
+\max\left\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\left(r - \sum_{i=1}^{k}w_{i}x_{i}\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\right\\}.
 $$
 
-Let the triple $$\mathbf{y} = (k,r,S)$$ denote the current state at the $$k$$th item with capacity used, $$r$$, and set of indices of currently included knapsack items $$S$$. The immediate profit earned by considering $$\mathbf{y}$$ and $$\lambda$$ is defined using 
+Let the triple $$\mathbf{y} = (k,r,S)$$ denote the current state at the $`k`$th item with capacity used, $$r$$, and set of indices of currently included knapsack items $$S$$. The immediate profit earned by considering $$\mathbf{y}$$ and $$\lambda$$ is defined using 
 
 $$
 g(\mathbf{y},u) = p_{kk} + 2\sum_{j\in S\setminus \{k\}}p_{kj},
@@ -31,10 +31,10 @@ $$
 which is the profit of including item $$k$$ with capacity used $$r$$. A viable rollout approach introduces approximate costs-to-go function 
 
 $$
-\tilde{J}(\mathbf{y}) = \max\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\\left(r - \sum_{i=1}^{k}w_{i}x_{i}\\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\\}
+\tilde{J}(\mathbf{y}) = \max\left\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\\left(r - \sum_{i=1}^{k}w_{i}x_{i}\\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\right\\}
 $$
 
-which is an upper bound on the restricted problem \eqref{7}, so that approximate $$Q-$$ factors are computed according to
+which is an upper bound on the restricted problem, so that approximate $`Q-`$factors are computed according to
 
 $$
 \tilde{Q}(\mathbf{y},u) = g(\mathbf{y},u) + \tilde{J}(\mathbf{y}),
