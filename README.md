@@ -44,7 +44,7 @@ $$
 
 with $$u \in \mathcal{U}(\mathbf{y})=:\\{0,1\\}$$ such that $$u = 1$$ if item $$k$$ is included in the knapsack while $$w_{k}\leq r$$, and $$u = 0$$ otherwise. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An alternative of the presented method is also introduced using the well-known exact McCormick relaxation of 0-1 QKP 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An alternative of the presented method is also introduced using the well-known exact McCormick reformulation using McCormick envelopes of 0-1 QKP 
 
 $$
 \begin{alignat}{1}
