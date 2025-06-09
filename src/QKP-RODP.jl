@@ -1,4 +1,38 @@
-using JuMP, CPLEX, Distributions, StatsBase, Ipopt
+using JuMP, CPLEX, Distributions, StatsBase, Ipopt#,ArgParse
+
+## TODO: add in commandline options
+
+# function parse_commandline()
+#     s = ArgParseSettings()
+#     @add_arg_table s begin 
+#         "--data_file"
+#             arg_type = String 
+#             default  = "../data/gap_d/d05100" ## ../data/gap_e/e201600, ../data/gap_e/e801600, ../data/gap_d/d05100
+#         "--max_iter"
+#             arg_type = Int64
+#             default  = 1000
+#         "--time_limit"
+#             arg_type = Float64
+#             default  = 600 ## seconds 
+#         "--nu"
+#             arg_type = Float64
+#             default  = 2.0
+#         "--zeta"
+#             arg_type = Float64
+#             default = 1/1.5
+#         "--epsilon_gap"
+#             arg_type = Float64
+#             default  = 0.02 ### 
+#         "--epsilon"
+#             arg_type = Float64
+#             default  = 0.01 
+#         "--step_init" 
+#             arg_type = Float64
+#             default = 0.02 
+#     end
+#     return parse_args(s)
+# end
+# args = parse_commandline() 
 
 ## generating data according to Fomeni & Letchford "A Dynamic Programming Heuristic for the QKP"
 function get_data(n,density_percentage) # n is the dimension of the decision variables, what is density percentage?
