@@ -51,21 +51,7 @@ function solve_QKP(p,w,W,n)
     return objective_value(model)
 end
 
-# n = 10
-# p = [
-#     1 68 71 25 87 0 4 8 44 0;
-#     2 60 20 6 92 0 78 0 38 0;
-#     0 0 0 0 47 25 0 94 30 61;
-#     0 0 97 86 0 66 0 13 0 0;
-#     78 0 0 0 29 63 0 0 0 24;
-#     0 5 60 0 0 31 0 0 3 72;
-#     22 39 90 54 0 97 0 94 91 0;
-#     83 48 45 47 0 4 0 0 0 0;
-#     56 0 0 0 10 44 0 25 0 96;
-#     13 0 0 66 19 0 0 74 0 0
-# ]
-# w = [2, 8, 4, 8, 4, 3, 1, 6, 9, 3]
-# W = 10
+## TODO: read in data from the one instance file, if specified...  
 
 # output_for_non_relaxed = solve_QKP(p,w,W,n)
 
@@ -211,22 +197,6 @@ end
 #     r = argmax{r in 0:W} f(n,r) ## maximize over all possible values of r... TODO: FIX
 #     return r, elapsed_time ## objective value evaluated after all items are considered with capacity used, r....... ?
 # end
-
-# n = 10
-# p = [
-#     1 68 71 25 87 0 4 8 44 0;
-#     2 60 20 6 92 0 78 0 38 0;
-#     0 0 0 0 47 25 0 94 30 61;
-#     0 0 97 86 0 66 0 13 0 0;
-#     78 0 0 0 29 63 0 0 0 24;
-#     0 5 60 0 0 31 0 0 3 72;
-#     22 39 90 54 0 97 0 94 91 0;
-#     83 48 45 47 0 4 0 0 0 0;
-#     56 0 0 0 10 44 0 25 0 96;
-#     13 0 0 66 19 0 0 74 0 0
-# ]
-# w = [2, 8, 4, 8, 4, 3, 1, 6, 9, 3]
-# W = 10
 
 ## main algorithm ... 
 # function QKP_rollout(p,w,W,n,s)
