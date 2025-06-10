@@ -24,7 +24,7 @@ $$
 \max\left\\{\sum_{i=1}^{k}\sum_{j=1}^{k}p_{ij}x_{i}x_{j} + \lambda\left(r - \sum_{i=1}^{k}w_{i}x_{i}\right) : \mathbf{x}\in\mathbb{B}^{k},\ \lambda\in \mathbb{R}\right\\}.
 $$
 
-Let the triple $$\mathbf{y} = (k,r,S)$$ denote the current state at the $`k`$th item with capacity used, $$r$$, and define the set of indices of currently included knapsack items as $$S$$. An immediate profit earned by considering $$\mathbf{y}$$ and multiplier $$\lambda$$ is defined using 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let the triple $$\mathbf{y} = (k,r,S)$$ denote the current state at the $`k`$th item with capacity used, $$r$$, and define the set of indices of currently included knapsack items as $$S$$. An immediate profit earned by considering $$\mathbf{y}$$ and multiplier $$\lambda$$ is defined using 
 
 $$
 g(\mathbf{y},u) = p_{kk} + 2\sum_{j\in S\setminus \{k\}}p_{kj},
