@@ -87,7 +87,9 @@ Data for this project is generated using the standard scheme for testing algorit
 
 $$p_{ij}\sim \begin{cases}0 & \\text{with probability } 1-\Delta,  \\\\ \\text{Uniform}\\{1,\ldots,100\\} & \\text{with probability } \Delta,\end{cases}$$
 
-where $$\Delta$$ is referred to as the *density* for the problem. The density, $$\Delta$$, is particularly important for determining the likelihood of how difficulty the problem instance in consideration will be.
+where $$\Delta$$ is referred to as the *density* for the problem. On the other
+hand, the remaining data $$w_{i}\sim \\text{Uniform}\\{1,\ldots,n\\}$$ for each $$i$$, whereas $$C\sim\\{n,\ldots,\sum_{i=1}^{n}w_{i}\\}$$. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The density, $$\Delta$$, is particularly important for determining the likelihood of how difficulty the problem instance in consideration will be.
 For larger values of $$\Delta$$, the impact of its effect is observed through the objective function, in which a larger $$\Delta$$ may yield an objective function with greatly many more terms. Consequently,
-this entails that there more likely will be many interactions that will need to be considered when optimizing, therein resulting in a significantly more challenging problem. On the other
-hand, the remaining data $$w_{i}\sim \\text{Uniform}\\{1,\ldots,n\\}$$ for each $$i$$, whereas $$C\sim\\{n,\ldots,\sum_{i=1}^{n}w_{i}\\}$$.
+this entails that there more likely will be many interactions that will need to be considered when optimizing, therein resulting in a significantly more challenging problem. 
