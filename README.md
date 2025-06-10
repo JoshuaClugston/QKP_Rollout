@@ -85,7 +85,7 @@ where $`z^{r}`$ denotes the objective value for rollout, and $`z^{c}`$ the objec
 ## Data
 Data for this project is generated using the standard scheme for testing algorithms designed for solving the 0-1 QKP. Particularly, for the profits associated with pairing $i$ with $j$, 
 
-$$p_{ij}\sim \begin{cases}0 & \\text{with probability } 1-\Delta,  \\\\ \\text{Uniform}\\{1,\ldots,100\\} & \\text{with probability } \Delta.\end{cases}$$
+$$p_{ij}\sim \begin{cases}0 & \\text{with probability } 1-\Delta,  \\\\ \\text{Uniform}\\{1,\ldots,100\\} & \\text{with probability } \Delta,\end{cases}$$
 
 where is $$\Delta$$ referred to as the *density* for the problem. The density, $$\Delta$$, is particularly important for determining the difficulty of the problem instance in consideration.
 For larger values of $$\Delta$$, the impact of its effects is observed through the objective function, in which a larger $$\Delta$$ may yield an objective function with greatly many more terms. Consequently,
