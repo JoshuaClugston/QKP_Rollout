@@ -1,4 +1,4 @@
-using JuMP, CPLEX, Distributions, StatsBase, Ipopt#,ArgParse
+using JuMP, CPLEX, Distributions, StatsBase, Ipopt, ArgParse
 
 ## TODO: add in commandline options
 
