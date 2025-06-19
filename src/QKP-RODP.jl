@@ -1,38 +1,32 @@
-using JuMP, CPLEX, Distributions, StatsBase, Ipopt, ArgParse
+using JuMP, CPLEX, ArgParse
 
-## TODO: add in commandline options
+include("../data/generate_data.jl")
+include("./base_policy")
 
-# function parse_commandline()
-#     s = ArgParseSettings()
-#     @add_arg_table s begin 
-#         "--data_file"
-#             arg_type = String 
-#             default  = "../data/gap_d/d05100" ## ../data/gap_e/e201600, ../data/gap_e/e801600, ../data/gap_d/d05100
-#         "--max_iter"
-#             arg_type = Int64
-#             default  = 1000
-#         "--time_limit"
-#             arg_type = Float64
-#             default  = 600 ## seconds 
-#         "--nu"
-#             arg_type = Float64
-#             default  = 2.0
-#         "--zeta"
-#             arg_type = Float64
-#             default = 1/1.5
-#         "--epsilon_gap"
-#             arg_type = Float64
-#             default  = 0.02 ### 
-#         "--epsilon"
-#             arg_type = Float64
-#             default  = 0.01 
-#         "--step_init" 
-#             arg_type = Float64
-#             default = 0.02 
-#     end
-#     return parse_args(s)
-# end
-# args = parse_commandline() 
+function parse_commandline()
+    s = ArgParseSettings()
+    @add_arg_table s begin 
+        "--from_file"
+            arg_type = Bool
+            default = false
+        "--data_file"
+            arg_type = String
+            default  = "../data/gap_d/d05100" ## ../data/gap_e/e201600, ../data/gap_e/e801600, ../data/gap_d/d05100
+        "--base_policy"
+            arg_type = String
+            default = "lagrangian" ## mccormick, lagrangian 
+    end
+    return parse_args(s)
+end
+args = parse_commandline() 
+
+## TODO: perform checks on, e.g., options available for base_policy are not violated, etc. If data_file == true, direct to appropriate file
+if args["base_policy"] != "lagrangian" || args["base_policy"] != "mccormick"
+    throw()
+end
+
+if args["from_file"] == true
+
 
 ## generating data according to Fomeni & Letchford "A Dynamic Programming Heuristic for the QKP"
 function get_data(n,density_percentage) # n is the dimension of the decision variables, what is density percentage?
