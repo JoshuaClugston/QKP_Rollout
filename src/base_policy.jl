@@ -1,8 +1,11 @@
-function base_policy_lagrangian(p,w, n, (S, W), λ) # lagrangian function of quadratic relaxation
+function base_policy_lagrangian(p,w, n, (S, W), λ, args) # lagrangian function of quadratic relaxation
     # function solve_QKP_Lagrangian(p,w, n, (k, W, include), λ) # lagrangian function of quadratic relaxation
     x = Dict();
-    # model = Model(CPLEX.Optimizer)
-    model = Model(SCIP.Optimizer)
+    if args["cplex"] == true
+        model = Model(CPLEX.Optimizer)
+    else
+        model = Model(HiGHS.Optimizer)
+    end
     set_silent(model)
 
     # @variable(model, x[1:k], Bin)
@@ -34,11 +37,14 @@ function base_policy_lagrangian(p,w, n, (S, W), λ) # lagrangian function of qua
     return objective_out, x_out
 end
 
-function base_policy_mccormick_relaxed(p,w,n,(S,W)) ## TODO: finish ....
+function base_policy_mccormick_relaxed(p,w,n,(S,W), args) ## TODO: finish ....
 
     x = Dict();
-    # model = Model(CPLEX.Optimizer)
-    model = Model(SCIP.Optimizer)
+    if args["cplex"] == true
+        model = Model(CPLEX.Optimizer)
+    else
+        model = Model(HiGHS.Optimizer)
+    end
     set_silent(model)
 
     # @variable(model, x[1:k], Bin)

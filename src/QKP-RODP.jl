@@ -9,12 +9,12 @@
 # objective_out, x = solve_QKP_Lagrangian(p,w, (n, W), λ)
 
 ## main algorithm ... 
-function QKP_rollout(p,w,W,n,s)
-    λ = solve_McCormick_QKP(p,w,W, 1) # initialize λ0 -- obtain from solving McCormick relaxation (with only a single item currently) 
+function QKP_rollout(p,w,W,n,s, args) 
+    λ = solve_McCormick_QKP_relaxed(p,w,W, 1, args) # initialize λ0 -- obtain from solving McCormick relaxation (with only a single item currently) 
     S = Set{Int64}(vcat(1:n)) ## initial set with all indices included 
     U = Set{Int64}(vcat(1:n))
     r = W # remaining capacity -- going to update within the loop to follow
-    profit = 0 # initialize the profit ... 
+    profit = 0 # initialize the profit 
     counter = 0
     elapsed_time = 0
     timing = time()
@@ -33,20 +33,20 @@ function QKP_rollout(p,w,W,n,s)
         xk = Dict() 
         for i in S̄
             S̃ = setdiff(S,i) ## S̄\{i}  
-            obj, x = base_policy_lagrangian(p,w, n, (S̃, r-w[i]), λ)
+            obj, x = base_policy_lagrangian(p,w, n, (S̃, r-w[i]), λ, args)
             xk[i] = x
             Vk[i] = p[i,i] + 2 * sum(p[i, k] for k in S̄) + obj
         end
 
         if isempty(Vk) == false
-            î = reduce((x, y) -> Vk[y] ≤ Vk[x] ? x : y, keys(Vk)) # get the key associated with the maximum value of the Dictionary -- only works is non-empty ... may pose problems if empty... 
+            î = reduce((x, y) -> Vk[y] ≤ Vk[x] ? x : y, keys(Vk)) # get the key associated with the maximum value of the Dictionary -- only works if non-empty, may pose problems if empty.
             xî = xk[î]
 
             S = delete!(S,î)
 
             r -= w[î] # update the remaining capacity 
 
-            gx = sum(w[i]*xî[i] for i in S) - r ## TODO: need to get x to be used from above ... also k is not being used here....
+            gx = sum(w[i]*xî[i] for i in S) - r
             λ_new = λ + s * gx
             λ = λ_new  
         else
@@ -75,4 +75,10 @@ function QKP_rollout(p,w,W,n,s)
 
     return profit
     # return sort!(collect(S)), sum(p[i,j] for i in S, j in S) 
+end
+
+##TODO: add logging 
+
+function log_RODP()
+
 end

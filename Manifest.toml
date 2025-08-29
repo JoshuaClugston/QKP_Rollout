@@ -2,7 +2,7 @@
 
 julia_version = "1.8.3"
 manifest_format = "2.0"
-project_hash = "e715655503c150e0f886d802e232caca5268e969"
+project_hash = "859a65afd196d62e1c5ab1edc9ccef360462201e"
 
 [[deps.ASL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -164,6 +164,18 @@ version = "1.0.1"
 deps = ["Artifacts", "Libdl"]
 uuid = "781609d7-10c4-51f6-84f2-b8444358ff6d"
 version = "6.2.1+2"
+
+[[deps.HiGHS]]
+deps = ["HiGHS_jll", "MathOptInterface", "PrecompileTools", "SparseArrays"]
+git-tree-sha1 = "4072498280282c7d80a139b1fbf26091e6c338ca"
+uuid = "87dc4568-4c63-4d18-b0c0-bb2238e4078b"
+version = "1.18.1"
+
+[[deps.HiGHS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "Libdl", "Zlib_jll"]
+git-tree-sha1 = "f56d423e3f583e26ceaef08a15a270b28723c89a"
+uuid = "8fd58aa0-07eb-5a78-9b36-339c94fd15ea"
+version = "1.11.0+1"
 
 [[deps.HypergeometricFunctions]]
 deps = ["LinearAlgebra", "OpenLibm_jll", "SpecialFunctions"]

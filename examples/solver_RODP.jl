@@ -1,6 +1,7 @@
 using ArgParse
 
 include("../src/QKP_Rollout.jl")
+using .QKP_Rollout
 
 function parse_commandline()
     s = ArgParseSettings()
@@ -23,6 +24,9 @@ function parse_commandline()
         "--step_size"
             arg_type = Float64
             default = 1.0
+        "--cplex"
+            arg_type = Bool
+            default = true ## true for cplex is available, false for cplex is not available
     end
     return parse_args(s)
 end
@@ -34,36 +38,26 @@ if args["base_policy"] != "lagrangian" && args["base_policy"] != "mccormick"
 end
 
 if args["from_file"] == true
-    n,p,w,W = get_data(args["data_file"])
+    n,p,w,W = QKP_Rollout.get_data(args["data_file"])
 else
     n = args["n"]
-    rob = args["prob"]
-    p, w, W = get_data(n,prob)
+    prob = args["prob"]
+    p, w, W = QKP_Rollout.get_data(n,prob)
 end
 
 λ = args["step_size"]
 
 
 # S, profit = QKP_rollout(p,w,W,n,1.0)
-profit = QKP_rollout(p,w,W,n, λ)
+profit = QKP_Rollout.QKP_rollout(p,w,W,n, λ, args)
 
 println("final profit is: ", profit)
 # println(w)
 # println(W)
 
-### testing feasibility 
-# y = []
-# for num in 1:50
-#     if !(num in )
-#         push!(y, 0)
-#     else 
-#         push!(y,1)
-#     end
-# end
-
-# println("Is $(sum(w[k]*y[k] for k in 1:n)) <= $(W)? If not, then infeasible.")
-
 ### check approximate "gap"
 # println(abs(profit - output_for_non_relaxed)/output_for_non_relaxed)
 
 # println(" $(abs(profit - objective_mccormick)/objective_mccormick) is the 'gap' value compared with McCormick reformulation.")
+
+## TODO: add comparison metrics, if desired ... this wil entail likely adding another flag to indicate whether or not a comparison is to be made...
